@@ -194,8 +194,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .rowx .meta b { display: block; font-size: 13.5px; }
 .rowx .meta span { font-size: 12px; color: var(--ink-muted); }
 .tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
-.flag { display: flex; gap: 10px; padding: 12px; border-radius: 12px; background: #FEF2F2; color: #7F1D1D; font-size: 12.5px; margin-top: 12px; }
-.flag .ic { width: 18px; height: 18px; color: var(--error); flex: none; margin-top: 1px; }
+.flag { display: flex; gap: 10px; padding: 12px; border-radius: 12px; background: #FFFBEB; color: #78350F; font-size: 12.5px; margin-top: 12px; }
+.flag .ic { width: 18px; height: 18px; color: var(--warning); flex: none; margin-top: 1px; }
 .mapbox { position: relative; height: 150px; border-radius: 12px; overflow: hidden; background: #E9F2F1; margin-bottom: 14px; }
 .mapbox svg { width: 100%; height: 100%; }
 .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -540,7 +540,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
           </div>
         </div>
       </div>
-      <div class="float-chip chip-b"><span class="ci" style="background:#FEE2E2;color:#B91C1C"><svg class="ic" style="width:18px;height:18px"><use href="#i-alert"/></svg></span><span>Flag: 7 calls in 5 min<small>Sent to manager for review</small></span></div>
+      <div class="float-chip chip-b"><span class="ci" style="background:#FEF3C7;color:#B45309"><svg class="ic" style="width:18px;height:18px"><use href="#i-alert"/></svg></span><span>Needs a quick review<small>Shared with the manager</small></span></div>
     </div>
   </div>
 </section>
@@ -569,7 +569,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
     <div class="pains">
       <div class="pain reveal">
         <p class="q">"I can't tell which calls really happened."</p>
-        <div class="fix"><svg class="ic"><use href="#i-pin"/></svg><div><b>Live GPS check-in at the clinic.</b> Distance to the clinic, time spent, and automatic flags for rapid or impossible visits.</div></div>
+        <div class="fix"><svg class="ic"><use href="#i-pin"/></svg><div><b>Live GPS check-in at the clinic.</b> Distance to the clinic, time spent, and a gentle alert when a visit needs a second look.</div></div>
       </div>
       <div class="pain reveal">
         <p class="q">"DCRs come late, and tour plans are ignored."</p>
@@ -595,12 +595,12 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
     <!-- 1. Visits -->
     <div class="feature">
       <div class="f-text reveal">
-        <span class="eyebrow">Visits & anti-fraud</span>
+        <span class="eyebrow">Visits & GPS</span>
         <h3 class="display">GPS-verified doctor calls, not just entries</h3>
-        <p>MRs check in at the clinic with live location. Pharmalyx compares it with the clinic's saved location and flags anything that doesn't add up.</p>
+        <p>MRs check in at the clinic with live location. Pharmalyx compares it with the clinic's saved location, so every call is backed by real data.</p>
         <ul class="ticks">
           <li><span><b>Distance to clinic</b> and time spent on every call</span></li>
-          <li><span><b>Automatic flags:</b> rapid visits, calls far from the clinic, repeated order slips</span></li>
+          <li><span><b>Smart visit checks</b> highlight calls the manager may want to review</span></li>
           <li><span><b>New doctors are verified</b> with GPS and a clinic signboard photo before they count</span></li>
           <li><span><b>Works offline</b> and syncs when the network returns</span></li>
         </ul>
@@ -625,7 +625,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
           <div class="rowx"><span class="av" style="background:#DCFCE7;color:#15803D">SR</span><div class="meta"><b>Dr. Suresh Reddy</b><span>10:12 · 18 m · 14 min</span></div><span class="tag ok">Valid</span></div>
           <div class="rowx"><span class="av" style="background:var(--jade-mist);color:var(--jade)">LP</span><div class="meta"><b>Dr. Lakshmi Prasanna</b><span>11:02 · 32 m · 11 min</span></div><span class="tag ok">Valid</span></div>
           <div class="rowx"><span class="av" style="background:#FEF3C7;color:#B45309">VK</span><div class="meta"><b>Dr. Venkat Kumar</b><span>12:40 · 1.4 km away</span></div><span class="tag warn">Review</span></div>
-          <div class="flag"><svg class="ic"><use href="#i-alert"/></svg><span><b>7 visits in 5 minutes</b> at 21:29 were flagged and sent to the manager.</span></div>
+          <div class="flag"><svg class="ic"><use href="#i-alert"/></svg><span><b>1 visit</b> was recorded away from the clinic and shared with the manager for review.</span></div>
         </div>
       </div>
     </div>
@@ -729,7 +729,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
     </div>
     <div class="mods">
       <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-cal"/></svg></div><h4>Tour planning</h4><p>Monthly plans, approvals and deviations.</p></div>
-      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-pin"/></svg></div><h4>Visits & GPS</h4><p>Live check-in, stay time and fraud flags.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-pin"/></svg></div><h4>Visits & GPS</h4><p>Live check-in, stay time and visit checks.</p></div>
       <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-doc"/></svg></div><h4>Daily call report</h4><p>DCR built from visits, approve or return.</p></div>
       <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-doctor"/></svg></div><h4>Doctor master</h4><p>Classes, specialities, birthdays and verification.</p></div>
       <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-store"/></svg></div><h4>Chemists & stockists</h4><p>Mapped to territories and MRs.</p></div>
@@ -769,14 +769,14 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">How it works</span>
-      <h2 class="display">Live with your team in <span class="accent">days, not months</span></h2>
+      <h2 class="display">Live with your team in <span class="accent">2–3 days</span></h2>
       <p>We do the heavy lifting, including moving your data from your current MR app.</p>
     </div>
     <div class="steps">
       <div class="step reveal"><h4>Free demo</h4><p>A 30-minute call on your own workflow: tour plans, DCR format and allowances.</p><small>Day 1</small></div>
-      <div class="step reveal"><h4>We import your data</h4><p>Send us your doctors, chemists, stockists and users in Excel or from your old app. We load and check them.</p><small>Day 2–3</small></div>
-      <div class="step reveal"><h4>Set up your company</h4><p>Divisions, territories, roles, approval chain and TA/DA rules, set up together with your admin.</p><small>Day 3–4</small></div>
-      <div class="step reveal"><h4>MRs go live</h4><p>MRs install the app and start their day. We train your team and stay on WhatsApp for support.</p><small>Day 5</small></div>
+      <div class="step reveal"><h4>We import your data</h4><p>Send us your doctors, chemists, stockists and users in Excel or from your old app. We load and check them.</p><small>Day 1–2</small></div>
+      <div class="step reveal"><h4>Set up your company</h4><p>Divisions, territories, roles, approval chain and TA/DA rules, set up together with your admin.</p><small>Day 2</small></div>
+      <div class="step reveal"><h4>MRs go live</h4><p>MRs install the app and start their day. We train your team and stay on WhatsApp for support.</p><small>Day 3</small></div>
     </div>
   </div>
 </section>
@@ -793,7 +793,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
         <thead><tr><th>What you get</th><th class="us">Pharmalyx</th><th>Typical MR app</th><th>Excel & WhatsApp</th></tr></thead>
         <tbody>
           <tr><td>Visits checked against the clinic location</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">GPS only</span></td><td><span class="no">No</span></td></tr>
-          <tr><td>Automatic fraud flags for managers</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">Rare</span></td><td><span class="no">No</span></td></tr>
+          <tr><td>Smart alerts for managers</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">Rare</span></td><td><span class="no">No</span></td></tr>
           <tr><td>TA from real distance travelled</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">Manual km</span></td><td><span class="no">No</span></td></tr>
           <tr><td>Data moved from your old app</td><td class="us"><span class="yes">Included</span></td><td><span class="meh">Paid extra</span></td><td><span class="no">—</span></td></tr>
           <tr><td>Local support on WhatsApp</td><td class="us"><span class="yes">Yes</span></td><td><span class="meh">Ticket system</span></td><td><span class="no">No</span></td></tr>
@@ -835,7 +835,7 @@ footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32
       <details open><summary>Does the app work without internet?</summary><p>Yes. MRs can check in, record visits and book orders with no signal. Everything syncs automatically when the phone is back online.</p></details>
       <details><summary>Will GPS tracking drain the MR's battery?</summary><p>Location is recorded only during work hours, after the MR starts the day, and stops when they end it. Normal usage is comfortable on everyday Android phones.</p></details>
       <details><summary>Can you move our data from our current MR app?</summary><p>Yes. Send us your doctor, chemist, stockist and user lists in Excel or as an export from your current app. We import and check them for you.</p></details>
-      <details><summary>How long does it take to go live?</summary><p>Most teams go live within a week: demo, data import, company setup, then MRs install the app and start their day.</p></details>
+      <details><summary>How long does it take to go live?</summary><p>Most teams go live in 2–3 days: demo, data import, company setup, then MRs install the app and start their day.</p></details>
       <details><summary>Is there an iPhone app?</summary><p>The MR app is on Android today, which covers most field teams. Managers and head office use the web app on any computer or phone. Contact us if you need iPhone for your team.</p></details>
       <details><summary>Can we try it before paying?</summary><p>Yes. You get a <span data-text="trialText">30-day free trial</span> with your own company set up. No card needed, no setup fee.</p></details>
       <details><summary>Who can see our data?</summary><p>Only your company's users, based on their role. Each company's data is kept separate at the database level.</p></details>

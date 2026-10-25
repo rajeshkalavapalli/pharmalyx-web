@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pharmalyx · MR Reporting & Field Force Software for Pharma</title>
+<meta name="description" content="Pharmalyx is MR reporting and pharma SFA software for PCD pharma, marketing companies and distributors: GPS-verified visits, tour plans, DCR, TA/DA, orders and manager dashboards in one app.">
+<meta property="og:title" content="Pharmalyx · Field intelligence for modern pharma teams">
+<meta property="og:description" content="GPS-verified doctor calls, tour plans, DCR, TA/DA and orders in one app for MRs and managers. 30-day free trial.">
+<meta name="theme-color" content="#0A1628">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314B8A6'/%3E%3Cstop offset='1' stop-color='%230F766E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   PHARMALYX · "INK & JADE" (same brand tokens as the app)
+   ========================================================= */
+:root {
+    --ink: #0A1628; --ink-soft: #1C2B42; --ink-muted: #4B5768; --ink-faint: #97A1AE;
+    --jade: #0F766E; --jade-dark: #0B5C56; --jade-deep: #084A45; --jade-bright: #0D9488;
+    --jade-lively: #14B8A6; --jade-glow: #2DD4BF; --jade-mist: #E7F4F2; --jade-wash: #F2F9F8; --jade-line: #D5EBE8;
+    --gold: #E9C77B; --gold-dark: #B98F33; --gold-mist: #FBF4E4;
+    --bg: #F3F6F9; --paper: #FFFFFF; --line: #E2E8F0; --line-soft: #EDF1F5;
+    --success: #16A34A; --warning: #D97706; --error: #DC2626; --violet: #7C3AED; --info: #2563EB;
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-xl: 26px;
+    --shadow-sm: 0 1px 2px rgba(10,22,40,.06), 0 1px 3px rgba(10,22,40,.05);
+    --shadow-md: 0 8px 24px -8px rgba(10,22,40,.14), 0 2px 6px rgba(10,22,40,.05);
+    --shadow-lg: 0 30px 60px -20px rgba(10,22,40,.28), 0 12px 24px -12px rgba(10,22,40,.12);
+    --grad: linear-gradient(135deg, var(--jade-lively) 0%, var(--jade-bright) 45%, var(--jade) 100%);
+    --wrap: 1180px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--paper); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, svg { display: block; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+.display { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; text-wrap: balance; }
+.accent { color: var(--jade-bright); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--jade); }
+.eyebrow::before { content: ""; width: 18px; height: 2px; border-radius: 2px; background: var(--grad); }
+.section { padding: 104px 0; }
+.section-head { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+.section-head h2 { font-size: clamp(30px, 4vw, 44px); margin: 14px 0 14px; }
+.section-head p { margin: 0; color: var(--ink-muted); font-size: 17.5px; }
+.ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 700; font-size: 15.5px; border: 0; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; white-space: nowrap; }
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--jade-glow); outline-offset: 2px; }
+.btn-primary { background: var(--grad); color: #fff; box-shadow: 0 10px 24px -8px rgba(15,118,110,.6), inset 0 1px 0 rgba(255,255,255,.2); }
+.btn-primary:hover { box-shadow: 0 16px 30px -10px rgba(15,118,110,.7), inset 0 1px 0 rgba(255,255,255,.2); }
+.btn-ghost { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--jade-light, #5FB8AE); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-wa { background: #25D366; color: #06331b; }
+.btn-sm { height: 42px; padding: 0 18px; font-size: 14.5px; }
+
+/* ---------- Nav ---------- */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.82); backdrop-filter: saturate(1.6) blur(14px); -webkit-backdrop-filter: saturate(1.6) blur(14px); border-bottom: 1px solid transparent; transition: border-color .2s, box-shadow .2s; }
+.nav.scrolled { border-bottom-color: var(--line); box-shadow: 0 6px 20px -16px rgba(10,22,40,.3); }
+.nav-in { display: flex; align-items: center; gap: 32px; height: 72px; }
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand-mark { width: 40px; height: 40px; border-radius: 12px; background: var(--grad); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 22px; box-shadow: 0 8px 18px -8px rgba(15,118,110,.7), inset 0 1px 0 rgba(255,255,255,.25); }
+.brand-name { font-family: var(--display); font-weight: 700; font-size: 21px; line-height: 1; letter-spacing: -.01em; }
+.brand-name span { color: var(--jade-bright); }
+.brand-sub { font-size: 9.5px; font-weight: 700; letter-spacing: .2em; color: var(--ink-muted); margin-top: 4px; }
+.nav-links { display: flex; gap: 28px; margin-left: auto; font-size: 15px; font-weight: 600; color: var(--ink-soft); }
+.nav-links a { position: relative; padding: 6px 0; }
+.nav-links a:hover { color: var(--jade); }
+.nav-cta { display: flex; gap: 10px; align-items: center; }
+.nav-login { font-weight: 600; font-size: 15px; color: var(--ink-soft); padding: 0 8px; }
+.nav-login:hover { color: var(--jade); }
+.menu-btn { display: none; margin-left: auto; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; place-items: center; }
+.mobile-menu { display: none; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding: 72px 0 96px; overflow: hidden; background:
+    radial-gradient(900px 500px at 85% -10%, rgba(45,212,191,.22), transparent 60%),
+    radial-gradient(700px 500px at -10% 20%, rgba(15,118,110,.10), transparent 60%),
+    linear-gradient(180deg, #F7FBFB 0%, #fff 70%); }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(10,22,40,.07) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(180deg, #000 0%, transparent 70%); -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%); pointer-events: none; }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.02fr 1fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(40px, 5.6vw, 66px); margin: 0 0 20px; }
+.hero h1 em { font-style: italic; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: 4px; }
+.hero-lead { font-size: 19px; color: var(--ink-muted); max-width: 540px; margin: 0 0 32px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-proof { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 32px; font-size: 14.5px; color: var(--ink-soft); font-weight: 600; }
+.hero-proof span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-proof .ic { width: 18px; height: 18px; color: var(--success); stroke-width: 2.4; }
+
+/* Product mockups */
+.stage { position: relative; min-height: 520px; }
+.dash { position: absolute; right: -40px; top: 10px; width: 600px; border-radius: var(--r-lg); background: var(--paper); box-shadow: var(--shadow-lg), 0 0 0 1px rgba(10,22,40,.06); overflow: hidden; transform: perspective(1600px) rotateY(-9deg) rotateX(3deg); transform-origin: left center; }
+.dash-top { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: var(--ink); }
+.dash-top i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.dash-top span { margin-left: 12px; font-size: 11.5px; color: rgba(255,255,255,.6); font-weight: 600; }
+.dash-body { display: grid; grid-template-columns: 128px 1fr; min-height: 380px; }
+.dash-side { background: var(--ink-soft); padding: 16px 12px; display: flex; flex-direction: column; gap: 6px; }
+.dash-side div { height: 26px; border-radius: 7px; background: rgba(255,255,255,.06); display: flex; align-items: center; padding: 0 10px; font-size: 10.5px; color: rgba(255,255,255,.62); font-weight: 600; }
+.dash-side div.on { background: rgba(45,212,191,.16); color: var(--jade-glow); }
+.dash-main { padding: 18px; background: var(--bg); }
+.dash-title { font-family: var(--display); font-size: 17px; font-weight: 600; margin-bottom: 12px; }
+.kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.kpi { background: var(--paper); border-radius: 10px; padding: 11px 12px; box-shadow: var(--shadow-sm); }
+.kpi small { display: block; font-size: 9.5px; color: var(--ink-muted); font-weight: 600; }
+.kpi strong { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+.kpi em { font-style: normal; font-size: 9.5px; font-weight: 700; color: var(--success); margin-left: 4px; }
+.kbar { height: 5px; border-radius: 5px; background: var(--line-soft); margin-top: 7px; overflow: hidden; }
+.kbar i { display: block; height: 100%; border-radius: 5px; background: var(--grad); }
+.dash-row { display: grid; grid-template-columns: 1.35fr 1fr; gap: 10px; }
+.card-mini { background: var(--paper); border-radius: 10px; padding: 12px; box-shadow: var(--shadow-sm); }
+.card-mini h6 { margin: 0 0 10px; font-size: 10.5px; font-weight: 700; color: var(--ink-soft); }
+.bars { display: flex; align-items: flex-end; gap: 7px; height: 104px; }
+.bars i { flex: 1; border-radius: 4px 4px 2px 2px; background: var(--jade-mist); position: relative; }
+.bars i b { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 4px 4px 2px 2px; background: var(--grad); }
+.team { display: flex; flex-direction: column; gap: 8px; }
+.team div { display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; }
+.team div span:first-child { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 9px; color: #fff; flex: none; }
+.team div em { margin-left: auto; font-style: normal; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 99px; }
+.ok { background: #DCFCE7; color: #15803D; } .warn { background: #FEF3C7; color: #B45309; } .bad { background: #FEE2E2; color: #B91C1C; }
+
+.phone { position: absolute; left: -6px; bottom: -20px; width: 236px; padding: 9px; border-radius: 38px; background: #0b1220; box-shadow: var(--shadow-lg), 0 0 0 2px #26324a inset; z-index: 2; }
+.phone-in { border-radius: 30px; overflow: hidden; background: var(--bg); height: 468px; position: relative; }
+.notch { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 76px; height: 20px; border-radius: 99px; background: #0b1220; z-index: 3; }
+.ph-head { background: var(--ink); color: #fff; padding: 40px 16px 18px; }
+.ph-head small { font-size: 10px; color: rgba(255,255,255,.6); font-weight: 600; }
+.ph-head div { font-family: var(--display); font-size: 19px; font-weight: 600; margin-top: 2px; }
+.ph-stats { display: flex; gap: 6px; margin-top: 12px; }
+.ph-stats span { flex: 1; background: rgba(255,255,255,.08); border-radius: 9px; padding: 7px 8px; font-size: 9px; color: rgba(255,255,255,.65); font-weight: 600; }
+.ph-stats b { display: block; color: #fff; font-size: 14px; }
+.ph-body { padding: 12px; display: flex; flex-direction: column; gap: 9px; }
+.ph-card { background: var(--paper); border-radius: 13px; padding: 11px 12px; box-shadow: var(--shadow-sm); font-size: 11px; }
+.ph-card .t { font-weight: 700; font-size: 12px; }
+.ph-card .s { color: var(--ink-muted); font-size: 10px; font-weight: 500; }
+.ph-gps { display: flex; align-items: center; gap: 6px; margin: 8px 0 9px; font-size: 10px; font-weight: 700; color: var(--jade); }
+.ph-gps i { width: 8px; height: 8px; border-radius: 50%; background: var(--jade-glow); box-shadow: 0 0 0 4px rgba(45,212,191,.25); animation: pulse 2s infinite; }
+.ph-btn { height: 34px; border-radius: 10px; background: var(--grad); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 11.5px; }
+.ph-row { display: flex; align-items: center; gap: 9px; }
+.ph-row .dot { width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; flex: none; }
+.ph-row em { margin-left: auto; font-style: normal; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 99px; }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 0 3px rgba(45,212,191,.35); } 50% { box-shadow: 0 0 0 7px rgba(45,212,191,0); } }
+
+.float-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 10px; background: var(--paper); border-radius: 14px; padding: 10px 14px; box-shadow: var(--shadow-md), 0 0 0 1px var(--line); font-size: 12.5px; font-weight: 700; animation: bob 6s ease-in-out infinite; }
+.float-chip small { display: block; font-size: 11px; font-weight: 600; color: var(--ink-muted); }
+.float-chip .ci { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.chip-a { right: 6px; top: -14px; }
+.chip-b { right: -18px; bottom: 34px; animation-delay: -3s; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* ---------- Built for strip ---------- */
+.strip { border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); background: var(--paper); }
+.strip-in { display: flex; align-items: center; gap: 28px; padding: 26px 24px; flex-wrap: wrap; justify-content: center; }
+.strip-in > span { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+.strip-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.strip-tags span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: var(--bg); font-weight: 600; font-size: 14.5px; color: var(--ink-soft); }
+.strip-tags .ic { width: 17px; height: 17px; color: var(--jade); }
+
+/* ---------- Problem / solution ---------- */
+.pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.pain { background: var(--paper); border-radius: var(--r-lg); padding: 30px; box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line); position: relative; overflow: hidden; }
+.pain .q { font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.3; margin: 0 0 18px; }
+.pain .q::before { content: "“"; display: block; font-size: 52px; line-height: .6; color: var(--jade-lively); margin-bottom: 6px; }
+.pain .fix { display: flex; gap: 12px; padding-top: 18px; border-top: 1px dashed var(--line); color: var(--ink-muted); font-size: 15px; }
+.pain .fix b { color: var(--ink); }
+.pain .fix .ic { flex: none; width: 22px; height: 22px; color: var(--jade); margin-top: 2px; }
+
+/* ---------- Feature showcases ---------- */
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 56px 0; }
+.feature + .feature { border-top: 1px solid var(--line-soft); }
+.feature.rev .f-text { order: 2; }
+.f-text h3 { font-size: clamp(28px, 3.2vw, 38px); margin: 14px 0 16px; }
+.f-text > p { color: var(--ink-muted); font-size: 17px; margin: 0 0 24px; }
+.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.ticks li { display: flex; gap: 12px; font-size: 15.5px; color: var(--ink-soft); }
+.ticks li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 1px; border-radius: 7px; background: var(--jade-mist) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F766E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat; }
+.ticks b { color: var(--ink); }
+.f-visual { position: relative; border-radius: var(--r-xl); padding: 34px; min-height: 380px; display: grid; place-items: center; background: linear-gradient(160deg, var(--jade-wash), var(--jade-mist)); overflow: hidden; }
+.f-visual::after { content: ""; position: absolute; width: 380px; height: 380px; border-radius: 50%; right: -120px; top: -140px; background: radial-gradient(circle, rgba(45,212,191,.28), transparent 65%); }
+.f-visual.ink { background: linear-gradient(160deg, var(--ink) 0%, #12243d 100%); }
+.f-visual.gold { background: linear-gradient(160deg, #FFFBF2, var(--gold-mist)); }
+.panel { position: relative; z-index: 1; width: 100%; max-width: 440px; background: var(--paper); border-radius: var(--r-lg); box-shadow: var(--shadow-lg); padding: 20px; }
+.panel h5 { margin: 0 0 4px; font-size: 15px; font-weight: 700; }
+.panel .sub { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 14px; }
+.rowx { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line-soft); font-size: 13.5px; }
+.rowx:first-of-type { border-top: 0; }
+.rowx .av { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; font-size: 12px; flex: none; }
+.rowx .meta { flex: 1; min-width: 0; }
+.rowx .meta b { display: block; font-size: 13.5px; }
+.rowx .meta span { font-size: 12px; color: var(--ink-muted); }
+.tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
+.flag { display: flex; gap: 10px; padding: 12px; border-radius: 12px; background: #FEF2F2; color: #7F1D1D; font-size: 12.5px; margin-top: 12px; }
+.flag .ic { width: 18px; height: 18px; color: var(--error); flex: none; margin-top: 1px; }
+.mapbox { position: relative; height: 150px; border-radius: 12px; overflow: hidden; background: #E9F2F1; margin-bottom: 14px; }
+.mapbox svg { width: 100%; height: 100%; }
+.flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.flow span { padding: 7px 12px; border-radius: 10px; background: var(--jade-mist); color: var(--jade-deep); font-weight: 700; font-size: 12.5px; }
+.flow i { color: var(--ink-faint); font-style: normal; font-weight: 700; }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.cal div { aspect-ratio: 1; border-radius: 8px; background: var(--bg); font-size: 10.5px; font-weight: 700; color: var(--ink-muted); display: grid; place-items: center; position: relative; }
+.cal .p { background: var(--jade-mist); color: var(--jade-deep); }
+.cal .d { background: #DCFCE7; color: #15803D; }
+.cal .v { background: #FEF3C7; color: #B45309; }
+.cal .h { background: transparent; color: var(--ink-faint); }
+.legend { display: flex; gap: 14px; margin-top: 12px; font-size: 11.5px; color: var(--ink-muted); font-weight: 600; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.money { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+.money div { background: var(--bg); border-radius: 12px; padding: 12px; }
+.money small { display: block; font-size: 11px; color: var(--ink-muted); font-weight: 600; }
+.money b { font-size: 18px; letter-spacing: -.02em; }
+.ink-panel { position: relative; z-index: 1; width: 100%; max-width: 460px; color: #fff; }
+.ink-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ink-kpis div { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 16px; }
+.ink-kpis small { font-size: 12px; color: rgba(255,255,255,.6); font-weight: 600; }
+.ink-kpis b { display: block; font-size: 28px; letter-spacing: -.03em; margin: 2px 0 8px; }
+.ink-kpis .kbar { background: rgba(255,255,255,.1); }
+.insight { margin-top: 12px; display: flex; gap: 12px; background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.25); border-radius: 16px; padding: 14px 16px; font-size: 13.5px; color: rgba(255,255,255,.85); }
+.insight .ic { color: var(--jade-glow); flex: none; }
+.line-chart { margin-top: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 14px 16px; }
+.line-chart small { font-size: 12px; color: rgba(255,255,255,.6); font-weight: 600; }
+
+/* ---------- Modules ---------- */
+.mods-bg { background: var(--bg); }
+.mods { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.mod { background: var(--paper); border-radius: var(--r-lg); padding: 24px 22px; box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line-soft); transition: transform .25s ease, box-shadow .25s ease; }
+.mod:hover { transform: translateY(-4px); box-shadow: var(--shadow-md), inset 0 0 0 1px var(--jade-line); }
+.mod .mi { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 16px; background: var(--jade-mist); color: var(--jade); }
+.mod h4 { margin: 0 0 6px; font-size: 16.5px; font-weight: 700; }
+.mod p { margin: 0; font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+
+/* ---------- Apps band ---------- */
+.apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.app { border-radius: var(--r-xl); padding: 32px; position: relative; overflow: hidden; }
+.app h3 { font-family: var(--display); font-size: 25px; font-weight: 600; margin: 16px 0 10px; letter-spacing: -.01em; }
+.app p { margin: 0 0 18px; font-size: 15px; }
+.app ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14.5px; font-weight: 600; }
+.app ul li::before { content: "→ "; opacity: .55; }
+.app .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 6px 12px; border-radius: 99px; }
+.app-1 { background: var(--ink); color: #fff; } .app-1 p { color: rgba(255,255,255,.7); } .app-1 .badge { background: rgba(45,212,191,.15); color: var(--jade-glow); }
+.app-2 { background: var(--jade-wash); box-shadow: inset 0 0 0 1px var(--jade-line); } .app-2 p { color: var(--ink-muted); } .app-2 .badge { background: var(--paper); color: var(--jade); }
+.app-3 { background: var(--gold-mist); box-shadow: inset 0 0 0 1px #F3E3BC; } .app-3 p { color: var(--ink-muted); } .app-3 .badge { background: var(--paper); color: var(--gold-dark); }
+
+/* ---------- Steps ---------- */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; position: relative; }
+.step { position: relative; padding: 28px 24px; border-radius: var(--r-lg); background: var(--paper); box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line); }
+.step::before { counter-increment: s; content: counter(s, decimal-leading-zero); font-family: var(--display); font-size: 40px; font-weight: 600; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.step h4 { margin: 14px 0 8px; font-size: 17.5px; }
+.step p { margin: 0; font-size: 14.5px; color: var(--ink-muted); }
+.step small { display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--jade); background: var(--jade-mist); padding: 4px 10px; border-radius: 99px; }
+
+/* ---------- Compare ---------- */
+.compare { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-md), inset 0 0 0 1px var(--line); background: var(--paper); }
+.compare table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.compare th, .compare td { padding: 17px 22px; text-align: left; border-bottom: 1px solid var(--line-soft); }
+.compare thead th { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); background: var(--bg); }
+.compare thead th.us { background: var(--ink); color: #fff; }
+.compare td.us { background: var(--jade-wash); font-weight: 700; color: var(--jade-deep); }
+.compare tr:last-child td { border-bottom: 0; }
+.yes, .no, .meh { display: inline-flex; align-items: center; gap: 8px; }
+.yes::before, .no::before, .meh::before { content: ""; width: 20px; height: 20px; border-radius: 50%; flex: none; background-position: center; background-repeat: no-repeat; background-size: 12px; }
+.yes::before { background-color: var(--jade); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E"); }
+.no::before { background-color: #FEE2E2; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23DC2626' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E"); }
+.meh::before { background-color: #FEF3C7; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B45309' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"); }
+.compare td { color: var(--ink-soft); }
+
+/* ---------- Security ---------- */
+.secure { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; background: var(--ink); color: #fff; border-radius: 32px; padding: 64px; position: relative; overflow: hidden; }
+.secure::before { content: ""; position: absolute; width: 520px; height: 520px; left: -200px; bottom: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(45,212,191,.22), transparent 65%); }
+.secure h2 { font-size: clamp(30px, 3.6vw, 42px); margin: 14px 0 16px; position: relative; }
+.secure .eyebrow { color: var(--jade-glow); }
+.secure > div > p { color: rgba(255,255,255,.7); font-size: 17px; margin: 0; position: relative; }
+.sec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; }
+.sec { padding: 20px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+.sec .ic { color: var(--jade-glow); width: 24px; height: 24px; }
+.sec h5 { margin: 12px 0 6px; font-size: 15.5px; }
+.sec p { margin: 0; font-size: 13.5px; color: rgba(255,255,255,.62); line-height: 1.55; }
+
+/* ---------- FAQ ---------- */
+.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+.faq-side h2 { font-size: clamp(30px, 3.6vw, 42px); margin: 14px 0 16px; }
+.faq-side p { color: var(--ink-muted); font-size: 17px; margin: 0 0 24px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq details:first-child { border-top: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; font-weight: 700; font-size: 17px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A1628' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/14px no-repeat; transition: transform .25s ease, background-color .25s; }
+.faq details[open] summary::after { transform: rotate(45deg); background-color: var(--jade-mist); }
+.faq details p { margin: 0 0 22px; color: var(--ink-muted); font-size: 15.5px; max-width: 640px; }
+
+/* ---------- Demo / contact ---------- */
+.demo { position: relative; overflow: hidden; background: var(--grad); border-radius: 32px; padding: 64px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; color: #fff; box-shadow: 0 40px 80px -30px rgba(15,118,110,.6); }
+.demo::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1px); background-size: 20px 20px; mask-image: linear-gradient(120deg, #000, transparent 60%); -webkit-mask-image: linear-gradient(120deg, #000, transparent 60%); }
+.demo > * { position: relative; }
+.demo h2 { font-size: clamp(32px, 4vw, 46px); margin: 0 0 16px; }
+.demo .lead { color: rgba(255,255,255,.85); font-size: 17.5px; margin: 0 0 28px; }
+.demo .perks { list-style: none; padding: 0; margin: 0 0 30px; display: grid; gap: 12px; font-weight: 600; }
+.demo .perks li { display: flex; gap: 12px; align-items: center; }
+.demo .perks .ic { width: 22px; height: 22px; padding: 3px; border-radius: 50%; background: rgba(255,255,255,.18); stroke-width: 3; }
+.contact-lines { display: grid; gap: 10px; font-weight: 600; }
+.contact-lines a { display: inline-flex; align-items: center; gap: 10px; color: #fff; opacity: .95; }
+.contact-lines a:hover { opacity: 1; text-decoration: underline; }
+.form { background: var(--paper); color: var(--ink); border-radius: 24px; padding: 30px; box-shadow: var(--shadow-lg); }
+.form h3 { margin: 0 0 4px; font-size: 21px; }
+.form > p { margin: 0 0 20px; font-size: 14px; color: var(--ink-muted); }
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.field input, .field select, .field textarea { height: 48px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--paper); padding: 0 14px; font-size: 15px; transition: border-color .2s, box-shadow .2s; }
+.field textarea { height: 84px; padding: 12px 14px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--jade-bright); box-shadow: 0 0 0 4px rgba(20,184,166,.15); }
+.field input:invalid:not(:placeholder-shown) { border-color: var(--error); }
+.form-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.form-actions .btn { flex: 1; min-width: 180px; }
+.form-note { margin: 12px 0 0; font-size: 12.5px; color: var(--ink-muted); }
+.form-msg { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--jade-mist); color: var(--jade-deep); font-size: 14px; font-weight: 600; }
+.form-msg.show { display: block; }
+
+/* ---------- Footer ---------- */
+footer { background: var(--ink); color: rgba(255,255,255,.7); padding: 72px 0 32px; margin-top: 104px; }
+.foot { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; }
+.foot .brand-name { color: #fff; }
+.foot .brand-sub { color: rgba(255,255,255,.5); }
+.foot p { font-size: 14.5px; margin: 18px 0 0; max-width: 320px; }
+.foot h6 { margin: 0 0 16px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 14.5px; }
+.foot a:hover { color: var(--jade-glow); }
+.foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13.5px; }
+
+/* Floating WhatsApp + mobile CTA bar */
+.wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 14px 30px -10px rgba(37,211,102,.7); transition: transform .2s; }
+.wa-float:hover { transform: scale(1.06); }
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
+.m-bar { display: none; }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .float-chip, .ph-gps i { animation: none; }
+    .btn:hover, .mod:hover { transform: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+    .nav-links { gap: 20px; }
+    .dash { width: 540px; right: -80px; }
+    .mods { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+    .section { padding: 80px 0; }
+    .nav-links, .nav-cta { display: none; }
+    .menu-btn { display: grid; }
+    .mobile-menu.open { display: flex; flex-direction: column; gap: 4px; padding: 8px 24px 20px; border-top: 1px solid var(--line); background: var(--paper); }
+    .mobile-menu a { padding: 12px 0; font-weight: 600; border-bottom: 1px solid var(--line-soft); }
+    .mobile-menu .btn { margin-top: 12px; }
+    .hero { padding: 48px 0 64px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stage { min-height: 500px; max-width: 620px; width: 100%; margin: 0 auto; }
+    .dash { right: -10px; width: 520px; transform: none; }
+    .pains, .apps { grid-template-columns: 1fr; }
+    .feature, .feature.rev { grid-template-columns: 1fr; gap: 36px; padding: 40px 0; }
+    .feature.rev .f-text { order: 0; }
+    .mods { grid-template-columns: repeat(2, 1fr); }
+    .secure, .demo { grid-template-columns: 1fr; padding: 44px 28px; gap: 36px; border-radius: 26px; }
+    .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+    .foot { grid-template-columns: 1fr 1fr; }
+    .compare { overflow-x: auto; }
+    .compare table { min-width: 620px; }
+}
+@media (max-width: 600px) {
+    body { font-size: 15.5px; }
+    .wrap { padding: 0 16px; }
+    .hero h1 { font-size: 38px; }
+    .hero-lead { font-size: 17px; }
+    .hero-ctas .btn { flex: 1 1 100%; }
+    .stage { min-height: 470px; }
+    .dash { width: 470px; right: -140px; top: 0; }
+    .phone { width: 210px; left: 0; bottom: -10px; }
+    .phone-in { height: 420px; }
+    .chip-a { right: 0; top: -20px; }
+    .chip-b { display: none; }
+    .section-head { margin-bottom: 40px; }
+    .section-head p { font-size: 16px; }
+    .f-visual { padding: 18px; min-height: 0; border-radius: 22px; }
+    .mods, .steps, .sec-grid, .fgrid { grid-template-columns: 1fr; }
+    .money { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .money b { font-size: 15px; }
+    .secure, .demo { padding: 34px 20px; }
+    .form { padding: 22px 18px; }
+    .foot { grid-template-columns: 1fr; gap: 32px; }
+    footer { margin-top: 80px; padding-bottom: 96px; }
+    .wa-float { display: none; }
+    .m-bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
+    .m-bar .btn { flex: 1; height: 48px; padding: 0 12px; font-size: 14.5px; }
+    .strip-tags span { font-size: 13.5px; padding: 8px 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Shared icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2.5 2.5 0 0 0-2.5 2.5v13A2.5 2.5 0 0 0 7 21h10a2.5 2.5 0 0 0 2.5-2.5V8.5z"/><path d="M14 3v5.5h5.5M8.5 13h7M8.5 16.5h5"/></symbol>
+  <symbol id="i-doctor" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20.5c.6-4 3.4-6.5 7-6.5s6.4 2.5 7 6.5"/><path d="M12 14v3.5M10.3 15.8h3.4"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9.5 5.5 4h13L20 9.5"/><path d="M4 9.5h16v1a3 3 0 0 1-5.3 1.9 3 3 0 0 1-5.4 0A3 3 0 0 1 4 10.5z"/><path d="M5.5 13v7.5h13V13M10 20.5v-4.5h4v4.5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.3 11h10.8L20.5 7.5H6.4"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-rupee" viewBox="0 0 24 24"><path d="M7 4.5h10M7 9h10M7 4.5h3.5a4.5 4.5 0 0 1 0 9H7l7.5 7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-approve" viewBox="0 0 24 24"><path d="M9 11.5l2 2 4-4.5"/><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8.2-7.5 9.5-4.3-1.3-7.5-5-7.5-9.5V6z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/><path d="M6 6V5a2 2 0 0 1 2.4-2L17 4.7"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5"/><path d="M4 15v3.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V15"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8.2-7.5 9.5-4.3-1.3-7.5-5-7.5-9.5V6z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 10a4.3 4.3 0 0 1-.5 8.5z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="m3 12.5 9 5 9-5M3 17l9 5 9-5"/></symbol>
+  <symbol id="i-offline" viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></symbol>
+  <symbol id="i-call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.5 3-5.5 6.5-5.5s6 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2 .7 3.2 2.5 3.5 5.2"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6h11v10h-11zM13.5 9.5H18l3.5 3.5V16h-8"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.7-.4z"/></symbol>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="Pharmalyx home">
+      <span class="brand-mark">P</span>
+      <span><span class="brand-name">Pharma<span>lyx</span></span><div class="brand-sub">FIELD INTELLIGENCE</div></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#modules">Modules</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-login" data-href="appUrl" href="#">Login</a>
+      <a class="btn btn-primary btn-sm" href="#demo">Book a free demo</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#modules">Modules</a>
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
+    <a data-href="appUrl" href="#">Login</a>
+    <a class="btn btn-primary" href="#demo">Book a free demo</a>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <h1 class="display">Every doctor call, <em>verified.</em><br>Every rupee, accounted.</h1>
+      <p class="hero-lead">Pharmalyx gives your MRs one simple app for tour plans, GPS-verified visits, DCRs, orders and TA/DA, and gives managers a live view of the whole field team.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#demo">Book a free demo <svg class="ic" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" data-wa="Hi, I'd like to see a demo of Pharmalyx." href="#"><svg class="ic" style="width:20px;height:20px;fill:#25D366;stroke:none" viewBox="0 0 32 32"><use href="#i-wa"/></svg> Chat on WhatsApp</a>
+      </div>
+      <div class="hero-proof">
+        <span><svg class="ic"><use href="#i-check"/></svg><span data-text="trialText">30-day free trial</span></span>
+        <span><svg class="ic"><use href="#i-check"/></svg>No setup fee</span>
+        <span><svg class="ic"><use href="#i-check"/></svg>Works offline in the field</span>
+        <span><svg class="ic"><use href="#i-check"/></svg>We move your data from your old app</span>
+      </div>
+    </div>
+
+    <div class="stage reveal" aria-hidden="true">
+      <div class="float-chip chip-a"><span class="ci" style="background:#DCFCE7;color:#15803D"><svg class="ic" style="width:18px;height:18px"><use href="#i-pin"/></svg></span><span>Checked in at clinic<small>Dr. Suresh · 18 m away</small></span></div>
+      <div class="dash">
+        <div class="dash-top"><i></i><i></i><i></i><span>Manager dashboard · Guntur HQ</span></div>
+        <div class="dash-body">
+          <div class="dash-side">
+            <div class="on">Dashboard</div><div>Tour plans</div><div>Visits</div><div>DCR</div><div>Orders</div><div>TA / DA</div><div>Insights</div><div>Reports</div>
+          </div>
+          <div class="dash-main">
+            <div class="dash-title">This month</div>
+            <div class="kpis">
+              <div class="kpi"><small>Doctor coverage</small><strong>82%</strong><em>▲ 6%</em><div class="kbar"><i style="width:82%"></i></div></div>
+              <div class="kpi"><small>Calls as planned</small><strong>91%</strong><em>▲ 4%</em><div class="kbar"><i style="width:91%"></i></div></div>
+              <div class="kpi"><small>DCRs on time</small><strong>76%</strong><em>▲ 9%</em><div class="kbar"><i style="width:76%"></i></div></div>
+            </div>
+            <div class="dash-row">
+              <div class="card-mini"><h6>Verified calls per week</h6>
+                <div class="bars"><i style="height:100%"><b style="height:58%"></b></i><i style="height:100%"><b style="height:66%"></b></i><i style="height:100%"><b style="height:61%"></b></i><i style="height:100%"><b style="height:74%"></b></i><i style="height:100%"><b style="height:70%"></b></i><i style="height:100%"><b style="height:84%"></b></i><i style="height:100%"><b style="height:92%"></b></i></div>
+              </div>
+              <div class="card-mini"><h6>Team today</h6>
+                <div class="team">
+                  <div><span style="background:#0F766E">RK</span>Ravi K.<em class="ok">9 calls</em></div>
+                  <div><span style="background:#7C3AED">SP</span>Sravani P.<em class="ok">8 calls</em></div>
+                  <div><span style="background:#D97706">MN</span>Mahesh N.<em class="warn">Deviation</em></div>
+                  <div><span style="background:#2563EB">AL</span>Anil L.<em class="bad">No DCR</em></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-in">
+          <div class="notch"></div>
+          <div class="ph-head"><small>Good morning, Ravi</small><div>My Day</div>
+            <div class="ph-stats"><span><b>12</b>Planned</span><span><b>5</b>Done</span><span><b>2</b>Orders</span></div>
+          </div>
+          <div class="ph-body">
+            <div class="ph-card">
+              <div class="t">Dr. Suresh Reddy</div><div class="s">Physician · Arundelpet, Guntur</div>
+              <div class="ph-gps"><i></i>You're at the clinic · 18 m</div>
+              <div class="ph-btn">Check in</div>
+            </div>
+            <div class="ph-card ph-row"><span class="dot" style="background:#DCFCE7;color:#15803D"><svg class="ic" style="width:15px;height:15px"><use href="#i-check"/></svg></span><div><div class="t">Dr. Lakshmi</div><div class="s">Done · 14 min</div></div><em class="ok">Valid</em></div>
+            <div class="ph-card ph-row"><span class="dot" style="background:var(--jade-mist);color:var(--jade)"><svg class="ic" style="width:15px;height:15px"><use href="#i-cart"/></svg></span><div><div class="t">Sri Sai Medicals</div><div class="s">POB ₹ 8,400</div></div><em class="ok">Booked</em></div>
+            <div class="ph-card ph-row"><span class="dot" style="background:var(--gold-mist);color:var(--gold-dark)"><svg class="ic" style="width:15px;height:15px"><use href="#i-wallet"/></svg></span><div><div class="t">TA / DA today</div><div class="s">42 km tracked</div></div><em class="warn">₹ 330</em></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-chip chip-b"><span class="ci" style="background:#FEE2E2;color:#B91C1C"><svg class="ic" style="width:18px;height:18px"><use href="#i-alert"/></svg></span><span>Flag: 7 calls in 5 min<small>Sent to manager for review</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILT FOR ============ -->
+<div class="strip">
+  <div class="strip-in">
+    <span>Built for</span>
+    <div class="strip-tags">
+      <span><svg class="ic"><use href="#i-flask"/></svg>PCD pharma franchises</span>
+      <span><svg class="ic"><use href="#i-users"/></svg>Ethical marketing companies</span>
+      <span><svg class="ic"><use href="#i-truck"/></svg>Distributors & stockists</span>
+      <span><svg class="ic"><use href="#i-store"/></svg>Teams of 5 to 500 MRs</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAINS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2 class="display">Field work you can <span class="accent">actually trust</span></h2>
+      <p>Most MR apps only collect reports. Pharmalyx checks them, so managers stop chasing and start coaching.</p>
+    </div>
+    <div class="pains">
+      <div class="pain reveal">
+        <p class="q">"I can't tell which calls really happened."</p>
+        <div class="fix"><svg class="ic"><use href="#i-pin"/></svg><div><b>Live GPS check-in at the clinic.</b> Distance to the clinic, time spent, and automatic flags for rapid or impossible visits.</div></div>
+      </div>
+      <div class="pain reveal">
+        <p class="q">"DCRs come late, and tour plans are ignored."</p>
+        <div class="fix"><svg class="ic"><use href="#i-cal"/></svg><div><b>Plan, visit and report in one flow.</b> The DCR builds itself from the day's visits, and every deviation goes to the manager.</div></div>
+      </div>
+      <div class="pain reveal">
+        <p class="q">"Every month the TA/DA claims become a fight."</p>
+        <div class="fix"><svg class="ic"><use href="#i-wallet"/></svg><div><b>TA/DA that calculates itself.</b> Distance from the location trail, your allowance rules, and clear reasons for every hold.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section" id="features" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Features</span>
+      <h2 class="display">One platform from <span class="accent">the clinic to the head office</span></h2>
+      <p>Everything your field force does in a day, captured once and reported everywhere.</p>
+    </div>
+
+    <!-- 1. Visits -->
+    <div class="feature">
+      <div class="f-text reveal">
+        <span class="eyebrow">Visits & anti-fraud</span>
+        <h3 class="display">GPS-verified doctor calls, not just entries</h3>
+        <p>MRs check in at the clinic with live location. Pharmalyx compares it with the clinic's saved location and flags anything that doesn't add up.</p>
+        <ul class="ticks">
+          <li><span><b>Distance to clinic</b> and time spent on every call</span></li>
+          <li><span><b>Automatic flags:</b> rapid visits, calls far from the clinic, repeated order slips</span></li>
+          <li><span><b>New doctors are verified</b> with GPS and a clinic signboard photo before they count</span></li>
+          <li><span><b>Works offline</b> and syncs when the network returns</span></li>
+        </ul>
+      </div>
+      <div class="f-visual reveal" aria-hidden="true">
+        <div class="panel">
+          <div class="mapbox">
+            <svg viewBox="0 0 440 150" preserveAspectRatio="xMidYMid slice">
+              <rect width="440" height="150" fill="#E6F1EF"/>
+              <path d="M0 108 C90 96 140 124 230 100 S380 70 440 84" stroke="#fff" stroke-width="14" fill="none"/>
+              <path d="M120 0 C130 50 104 100 132 150" stroke="#fff" stroke-width="10" fill="none"/>
+              <path d="M310 0 L292 150" stroke="#fff" stroke-width="8" fill="none"/>
+              <rect x="30" y="20" width="60" height="40" rx="6" fill="#D6E9E6"/><rect x="170" y="18" width="90" height="52" rx="6" fill="#D6E9E6"/><rect x="340" y="16" width="70" height="44" rx="6" fill="#D6E9E6"/><rect x="200" y="118" width="70" height="26" rx="6" fill="#D6E9E6"/>
+              <circle cx="222" cy="64" r="34" fill="rgba(20,184,166,.14)" stroke="#14B8A6" stroke-dasharray="4 4"/>
+              <circle cx="222" cy="64" r="7" fill="#0F766E" stroke="#fff" stroke-width="3"/>
+              <circle cx="236" cy="72" r="6" fill="#2DD4BF" stroke="#fff" stroke-width="3"/>
+              <rect x="246" y="40" width="112" height="26" rx="13" fill="#0A1628"/><text x="302" y="57" fill="#fff" font-size="11" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif">18 m from clinic ✓</text>
+            </svg>
+          </div>
+          <h5>Today's calls · Ravi K.</h5>
+          <div class="sub">Verified against clinic location</div>
+          <div class="rowx"><span class="av" style="background:#DCFCE7;color:#15803D">SR</span><div class="meta"><b>Dr. Suresh Reddy</b><span>10:12 · 18 m · 14 min</span></div><span class="tag ok">Valid</span></div>
+          <div class="rowx"><span class="av" style="background:var(--jade-mist);color:var(--jade)">LP</span><div class="meta"><b>Dr. Lakshmi Prasanna</b><span>11:02 · 32 m · 11 min</span></div><span class="tag ok">Valid</span></div>
+          <div class="rowx"><span class="av" style="background:#FEF3C7;color:#B45309">VK</span><div class="meta"><b>Dr. Venkat Kumar</b><span>12:40 · 1.4 km away</span></div><span class="tag warn">Review</span></div>
+          <div class="flag"><svg class="ic"><use href="#i-alert"/></svg><span><b>7 visits in 5 minutes</b> at 21:29 were flagged and sent to the manager.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Planning -->
+    <div class="feature rev">
+      <div class="f-text reveal">
+        <span class="eyebrow">Tour plan → Visit → DCR</span>
+        <h3 class="display">Plan the month. Report the day in minutes.</h3>
+        <p>MRs build their monthly tour plan, managers approve it, and the daily call report fills itself from the day's visits.</p>
+        <ul class="ticks">
+          <li><span><b>Monthly tour plan</b> with quick fill, day remarks and approval timeline</span></li>
+          <li><span><b>Deviations</b> are captured automatically and approved by the reporting manager</span></li>
+          <li><span><b>Doctor plans by class</b> (A/B/C) with visits-per-month targets and missed-doctor alerts</span></li>
+          <li><span><b>Pre-call notes</b> so every MR knows the doctor's history before walking in</span></li>
+        </ul>
+      </div>
+      <div class="f-visual reveal" aria-hidden="true">
+        <div class="panel">
+          <div class="flow"><span>Tour plan</span><i>→</i><span>Visit</span><i>→</i><span>DCR</span><i>→</i><span>Manager</span></div>
+          <h5>November tour plan</h5>
+          <div class="sub">Approved by Area Manager · 2 deviations</div>
+          <div class="cal">
+            <div class="h">M</div><div class="h">T</div><div class="h">W</div><div class="h">T</div><div class="h">F</div><div class="h">S</div><div class="h">S</div>
+            <div class="d">3</div><div class="d">4</div><div class="d">5</div><div class="v">6</div><div class="d">7</div><div class="d">8</div><div>9</div>
+            <div class="d">10</div><div class="d">11</div><div class="d">12</div><div class="d">13</div><div class="v">14</div><div class="d">15</div><div>16</div>
+            <div class="p">17</div><div class="p">18</div><div class="p">19</div><div class="p">20</div><div class="p">21</div><div class="p">22</div><div>23</div>
+            <div class="p">24</div><div class="p">25</div><div class="p">26</div><div class="p">27</div><div class="p">28</div><div class="p">29</div><div>30</div>
+          </div>
+          <div class="legend"><span><i style="background:#DCFCE7"></i>DCR done</span><span><i style="background:#FEF3C7"></i>Deviation</span><span><i style="background:var(--jade-mist)"></i>Planned</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. TA/DA -->
+    <div class="feature">
+      <div class="f-text reveal">
+        <span class="eyebrow">TA / DA & expenses</span>
+        <h3 class="display">Allowances that calculate themselves</h3>
+        <p>The app records the work-hours location trail, so TA follows the real distance travelled. Each day moves through MR, manager and admin review on its own.</p>
+        <ul class="ticks">
+          <li><span><b>Distance-based TA</b> from the location trail, DA from your own policy</span></li>
+          <li><span><b>Daily statement</b> with hold reasons the MR can answer from the app</span></li>
+          <li><span><b>Three-step approval</b> (MR → manager → admin) with automatic follow-ups</span></li>
+          <li><span><b>Monthly claims</b> with bills, ready for payroll</span></li>
+        </ul>
+      </div>
+      <div class="f-visual gold reveal" aria-hidden="true">
+        <div class="panel">
+          <h5>TA / DA · October</h5>
+          <div class="sub">Ravi K. · Guntur HQ</div>
+          <div class="money"><div><small>Distance</small><b>612 km</b></div><div><small>TA</small><b>₹ 3,672</b></div><div><small>DA</small><b>₹ 3,300</b></div></div>
+          <div class="rowx"><span class="av" style="background:#DCFCE7;color:#15803D">23</span><div class="meta"><b>Thu, 23 Oct</b><span>Ex-HQ · 42 km · 9 calls</span></div><span class="tag ok">Payable</span></div>
+          <div class="rowx"><span class="av" style="background:#FEF3C7;color:#B45309">22</span><div class="meta"><b>Wed, 22 Oct</b><span>Rapid visits found · reason sent</span></div><span class="tag warn">Manager</span></div>
+          <div class="rowx"><span class="av" style="background:#FEE2E2;color:#B91C1C">21</span><div class="meta"><b>Tue, 21 Oct</b><span>No DCR submitted</span></div><span class="tag bad">On hold</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Insights -->
+    <div class="feature rev">
+      <div class="f-text reveal">
+        <span class="eyebrow">Dashboards & insights</span>
+        <h3 class="display">See the whole field force on one screen</h3>
+        <p>Coverage, call quality, orders, secondary sales and expenses for every territory, with the problems already pointed out for you.</p>
+        <ul class="ticks">
+          <li><span><b>Live dashboards</b> for managers, head office and admin</span></li>
+          <li><span><b>Insights:</b> A-class doctors not visited, slow DCRs, unusual orders</span></li>
+          <li><span><b>Doctor spend vs business</b> to see which relationships pay back</span></li>
+          <li><span><b>Ready reports</b> by MR, territory and month, downloadable for Excel</span></li>
+        </ul>
+      </div>
+      <div class="f-visual ink reveal" aria-hidden="true">
+        <div class="ink-panel">
+          <div class="ink-kpis">
+            <div><small>Doctor coverage</small><b>82%</b><div class="kbar"><i style="width:82%"></i></div></div>
+            <div><small>POB this month</small><b>₹ 4.8 L</b><div class="kbar"><i style="width:68%"></i></div></div>
+          </div>
+          <div class="line-chart"><small>Secondary sales · last 6 months</small>
+            <svg viewBox="0 0 400 110" style="width:100%;height:auto;margin-top:8px">
+              <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2DD4BF" stop-opacity=".45"/><stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 90 L80 76 L160 80 L240 52 L320 44 L400 18 L400 110 L0 110Z" fill="url(#lg)"/>
+              <path d="M0 90 L80 76 L160 80 L240 52 L320 44 L400 18" fill="none" stroke="#2DD4BF" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="400" cy="18" r="5" fill="#2DD4BF"/>
+            </svg>
+          </div>
+          <div class="insight"><svg class="ic"><use href="#i-bulb"/></svg><span><b>Insight:</b> 14 A-class doctors in Tenali were not visited for 21 days. Ravi and Anil cover this area.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULES ============ -->
+<section class="section mods-bg" id="modules">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Modules</span>
+      <h2 class="display">Everything included. <span class="accent">Nothing bolted on.</span></h2>
+      <p>Switch on the modules your company needs, from a small PCD team to a multi-division sales force.</p>
+    </div>
+    <div class="mods">
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-cal"/></svg></div><h4>Tour planning</h4><p>Monthly plans, approvals and deviations.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-pin"/></svg></div><h4>Visits & GPS</h4><p>Live check-in, stay time and fraud flags.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-doc"/></svg></div><h4>Daily call report</h4><p>DCR built from visits, approve or return.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-doctor"/></svg></div><h4>Doctor master</h4><p>Classes, specialities, birthdays and verification.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-store"/></svg></div><h4>Chemists & stockists</h4><p>Mapped to territories and MRs.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-cart"/></svg></div><h4>Orders (POB)</h4><p>Doctor and chemist orders with slip photo.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-box"/></svg></div><h4>Samples & stock</h4><p>Issue, distribute and track gifts and samples.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-wallet"/></svg></div><h4>TA/DA & claims</h4><p>Location-based allowances and bills.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-clock"/></svg></div><h4>Attendance & leave</h4><p>Start-my-day check-in, leave balances.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-search"/></svg></div><h4>RCPA</h4><p>Retail chemist prescription audits.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-target"/></svg></div><h4>Targets & sales</h4><p>Primary, secondary and target tracking.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-rupee"/></svg></div><h4>Chemist credit</h4><p>Deliveries, dues and credit limits.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-approve"/></svg></div><h4>Approvals</h4><p>One inbox for every request to managers.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-chart"/></svg></div><h4>Doctor spend & ROI</h4><p>Spend compared with business returned.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-bulb"/></svg></div><h4>Insights & alerts</h4><p>Problems found for you, every day.</p></div>
+      <div class="mod reveal"><div class="mi"><svg class="ic"><use href="#i-upload"/></svg></div><h4>Data import</h4><p>Bring doctors, chemists and users from your old app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">One system, three views</span>
+      <h2 class="display">The right screen for <span class="accent">every role</span></h2>
+      <p>The same live data, shaped for the person using it.</p>
+    </div>
+    <div class="apps">
+      <div class="app app-1 reveal"><span class="badge"><svg class="ic" style="width:15px;height:15px"><use href="#i-phone"/></svg>Android app</span><h3>For MRs & BDEs</h3><p>Fast, simple and built for the road, even with a weak signal.</p><ul><li>My Day with today's plan</li><li>Check-in, orders and photos</li><li>TA/DA, attendance and leave</li></ul></div>
+      <div class="app app-2 reveal"><span class="badge"><svg class="ic" style="width:15px;height:15px"><use href="#i-users"/></svg>Web + mobile</span><h3>For managers</h3><p>Approve, coach and spot problems without phone calls.</p><ul><li>Team activity and deviations</li><li>Approvals in one inbox</li><li>Territory insights</li></ul></div>
+      <div class="app app-3 reveal"><span class="badge"><svg class="ic" style="width:15px;height:15px"><use href="#i-layers"/></svg>Web</span><h3>For head office</h3><p>Set up the company once and watch it run.</p><ul><li>Divisions, territories and users</li><li>Policies, allowances and roles</li><li>Company-wide reports</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section mods-bg" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="display">Live with your team in <span class="accent">days, not months</span></h2>
+      <p>We do the heavy lifting, including moving your data from your current MR app.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>Free demo</h4><p>A 30-minute call on your own workflow: tour plans, DCR format and allowances.</p><small>Day 1</small></div>
+      <div class="step reveal"><h4>We import your data</h4><p>Send us your doctors, chemists, stockists and users in Excel or from your old app. We load and check them.</p><small>Day 2–3</small></div>
+      <div class="step reveal"><h4>Set up your company</h4><p>Divisions, territories, roles, approval chain and TA/DA rules, set up together with your admin.</p><small>Day 3–4</small></div>
+      <div class="step reveal"><h4>MRs go live</h4><p>MRs install the app and start their day. We train your team and stay on WhatsApp for support.</p><small>Day 5</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Pharmalyx</span>
+      <h2 class="display">Built to check the work, <span class="accent">not just store it</span></h2>
+    </div>
+    <div class="compare reveal">
+      <table>
+        <thead><tr><th>What you get</th><th class="us">Pharmalyx</th><th>Typical MR app</th><th>Excel & WhatsApp</th></tr></thead>
+        <tbody>
+          <tr><td>Visits checked against the clinic location</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">GPS only</span></td><td><span class="no">No</span></td></tr>
+          <tr><td>Automatic fraud flags for managers</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">Rare</span></td><td><span class="no">No</span></td></tr>
+          <tr><td>TA from real distance travelled</td><td class="us"><span class="yes">Built in</span></td><td><span class="meh">Manual km</span></td><td><span class="no">No</span></td></tr>
+          <tr><td>Data moved from your old app</td><td class="us"><span class="yes">Included</span></td><td><span class="meh">Paid extra</span></td><td><span class="no">—</span></td></tr>
+          <tr><td>Local support on WhatsApp</td><td class="us"><span class="yes">Yes</span></td><td><span class="meh">Ticket system</span></td><td><span class="no">No</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECURITY ============ -->
+<section class="section" style="padding-top:40px">
+  <div class="wrap">
+    <div class="secure reveal">
+      <div>
+        <span class="eyebrow">Security & data</span>
+        <h2 class="display">Your company's data stays yours</h2>
+        <p>Pharmalyx keeps every company's data separate at the database level, and your MRs' location is recorded only during work hours.</p>
+      </div>
+      <div class="sec-grid">
+        <div class="sec"><svg class="ic"><use href="#i-shield"/></svg><h5>Company isolation</h5><p>Each company's records are walled off by the database itself, not just the app.</p></div>
+        <div class="sec"><svg class="ic"><use href="#i-lock"/></svg><h5>Encrypted access</h5><p>HTTPS everywhere and passwords stored as strong one-way hashes.</p></div>
+        <div class="sec"><svg class="ic"><use href="#i-cloud"/></svg><h5>Cloud backups</h5><p>Hosted on Microsoft Azure with automatic database backups.</p></div>
+        <div class="sec"><svg class="ic"><use href="#i-users"/></svg><h5>Role-based access</h5><p>MRs, managers and admins see only what their role allows.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" style="padding-top:40px">
+  <div class="wrap faq-grid">
+    <div class="faq-side reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="display">Questions, answered</h2>
+      <p>Can't find what you're looking for? Message us on WhatsApp and we'll reply the same day.</p>
+      <a class="btn btn-wa" data-wa="Hi, I have a question about Pharmalyx." href="#"><svg style="width:20px;height:20px;fill:#06331b" viewBox="0 0 32 32"><use href="#i-wa"/></svg> Ask on WhatsApp</a>
+    </div>
+    <div class="faq reveal">
+      <details open><summary>Does the app work without internet?</summary><p>Yes. MRs can check in, record visits and book orders with no signal. Everything syncs automatically when the phone is back online.</p></details>
+      <details><summary>Will GPS tracking drain the MR's battery?</summary><p>Location is recorded only during work hours, after the MR starts the day, and stops when they end it. Normal usage is comfortable on everyday Android phones.</p></details>
+      <details><summary>Can you move our data from our current MR app?</summary><p>Yes. Send us your doctor, chemist, stockist and user lists in Excel or as an export from your current app. We import and check them for you.</p></details>
+      <details><summary>How long does it take to go live?</summary><p>Most teams go live within a week: demo, data import, company setup, then MRs install the app and start their day.</p></details>
+      <details><summary>Is there an iPhone app?</summary><p>The MR app is on Android today, which covers most field teams. Managers and head office use the web app on any computer or phone. Contact us if you need iPhone for your team.</p></details>
+      <details><summary>Can we try it before paying?</summary><p>Yes. You get a <span data-text="trialText">30-day free trial</span> with your own company set up. No card needed, no setup fee.</p></details>
+      <details><summary>Who can see our data?</summary><p>Only your company's users, based on their role. Each company's data is kept separate at the database level.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMO ============ -->
+<section id="demo" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="demo reveal">
+      <div>
+        <h2 class="display">See Pharmalyx on your own workflow</h2>
+        <p class="lead">Book a free 30-minute demo. We'll show it with your tour plan, DCR format and allowance rules.</p>
+        <ul class="perks">
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-text="trialText">30-day free trial</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Free data import from your old app</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Training for MRs and managers</li>
+        </ul>
+        <div class="contact-lines">
+          <a data-href="tel" href="#"><svg class="ic"><use href="#i-call"/></svg><span data-text="phone">+91 90308 08231</span></a>
+          <a data-href="mailto" href="#"><svg class="ic"><use href="#i-mail"/></svg><span data-text="email">rajesh.aws1616@gmail.com</span></a>
+          <a data-wa="Hi, I'd like to see a demo of Pharmalyx." href="#"><svg style="width:22px;height:22px;fill:#fff" viewBox="0 0 32 32"><use href="#i-wa"/></svg>WhatsApp us</a>
+        </div>
+      </div>
+      <form class="form" id="demoForm" novalidate>
+        <h3>Book your free demo</h3>
+        <p>We'll reply within one working day.</p>
+        <div class="fgrid">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required placeholder="Full name" autocomplete="name"></div>
+          <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" required placeholder="Company name" autocomplete="organization"></div>
+          <div class="field"><label for="f-phone">Mobile number</label><input id="f-phone" name="phone" type="tel" required placeholder="10-digit mobile" pattern="[0-9+ ]{10,15}" autocomplete="tel"></div>
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" placeholder="you@company.com" autocomplete="email"></div>
+          <div class="field"><label for="f-size">Field team size</label>
+            <select id="f-size" name="size"><option>1–10 MRs</option><option selected>11–50 MRs</option><option>51–200 MRs</option><option>200+ MRs</option></select>
+          </div>
+          <div class="field"><label for="f-city">City</label><input id="f-city" name="city" placeholder="e.g. Hyderabad" autocomplete="address-level2"></div>
+          <div class="field full"><label for="f-msg">Anything we should know? (optional)</label><textarea id="f-msg" name="message" placeholder="Current MR app, number of divisions, modules you need…"></textarea></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-wa" type="submit" data-via="wa"><svg style="width:20px;height:20px;fill:#06331b" viewBox="0 0 32 32"><use href="#i-wa"/></svg>Send on WhatsApp</button>
+          <button class="btn btn-dark" type="submit" data-via="mail"><svg class="ic" style="width:19px;height:19px"><use href="#i-mail"/></svg>Send by email</button>
+        </div>
+        <p class="form-note">Your details go straight to our team on WhatsApp or email. We never share them.</p>
+        <div class="form-msg" id="formMsg" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="brand"><span class="brand-mark">P</span><span><span class="brand-name">Pharma<span>lyx</span></span><div class="brand-sub">FIELD INTELLIGENCE</div></span></a>
+        <p>MR reporting and field force software for pharma companies, PCD franchises and distributors. Made in <span data-text="city">Bengaluru</span>, India.</p>
+      </div>
+      <div><h6>Product</h6><ul><li><a href="#features">Features</a></li><li><a href="#modules">Modules</a></li><li><a data-href="appUrl" href="#">Login</a></li></ul></div>
+      <div><h6>Company</h6><ul><li><a href="#how">How it works</a></li><li><a href="#faq">FAQ</a></li><li><a href="#demo">Book a demo</a></li></ul></div>
+      <div><h6>Contact</h6><ul>
+        <li><a data-href="tel" href="#"><span data-text="phone">+91 90308 08231</span></a></li>
+        <li><a data-href="mailto" href="#"><span data-text="email">rajesh.aws1616@gmail.com</span></a></li>
+        <li><a data-wa="Hi, I'd like to know more about Pharmalyx." href="#">WhatsApp</a></li>
+        <li><span data-text="city">Bengaluru</span>, <span data-text="state">Karnataka</span></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="year">2026</span> Pharmalyx. All rights reserved.</span><span>Built for field teams across Andhra Pradesh, Telangana and India.</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="Hi, I'd like to know more about Pharmalyx." href="#" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32"><use href="#i-wa"/></svg></a>
+<div class="m-bar">
+  <a class="btn btn-wa" data-wa="Hi, I'd like to see a demo of Pharmalyx." href="#"><svg style="width:20px;height:20px;fill:#06331b" viewBox="0 0 32 32"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="btn btn-primary" href="#demo">Book demo</a>
+</div>
+
+<script>
+/* =========================================================
+   CONFIG · edit these before going live
+   ========================================================= */
+const CONFIG = {
+    email: "rajesh.aws1616@gmail.com",         // sales email (shown on the page, demo form "Send by email")
+    phone: "+91 90308 08231",            // shown on the page and used for the call link
+    whatsapp: "919030808231",            // WhatsApp number: country code + number, digits only
+    city: "Bengaluru",
+    state: "Karnataka",
+    appUrl: "https://pharmalyx-dev-ui.onrender.com",   // "Login" links
+    trialText: "30-day free trial",
+};
+
+(function () {
+    // Fill CONFIG values into the page.
+    document.querySelectorAll("[data-text]").forEach((el) => {
+        const v = CONFIG[el.dataset.text];
+        if (v) el.textContent = v;
+    });
+    const waLink = (text) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+    document.querySelectorAll("[data-wa]").forEach((el) => {
+        el.href = waLink(el.dataset.wa);
+        el.target = "_blank";
+        el.rel = "noopener";
+    });
+    document.querySelectorAll("[data-href]").forEach((el) => {
+        const k = el.dataset.href;
+        if (k === "tel") el.href = "tel:" + CONFIG.phone.replace(/[^\d+]/g, "");
+        if (k === "mailto") el.href = "mailto:" + CONFIG.email;
+        if (k === "appUrl") { el.href = CONFIG.appUrl; el.target = "_blank"; el.rel = "noopener"; }
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Sticky nav shadow
+    const nav = document.getElementById("nav");
+    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+        menu.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+    }));
+
+    // Reveal on scroll
+    const items = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        items.forEach((el) => io.observe(el));
+    } else {
+        items.forEach((el) => el.classList.add("in"));
+    }
+
+    // Demo form: no server, so it opens WhatsApp or the email app with the details filled in.
+    const form = document.getElementById("demoForm");
+    const out = document.getElementById("formMsg");
+    let via = "wa";
+    form.querySelectorAll("button[type=submit]").forEach((b) => b.addEventListener("click", () => { via = b.dataset.via; }));
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        const d = Object.fromEntries(new FormData(form).entries());
+        const lines = [
+            "Demo request for Pharmalyx",
+            `Name: ${d.name}`,
+            `Company: ${d.company}`,
+            `Mobile: ${d.phone}`,
+            d.email && `Email: ${d.email}`,
+            `Team size: ${d.size}`,
+            d.city && `City: ${d.city}`,
+            d.message && `Note: ${d.message}`,
+        ].filter(Boolean).join("\n");
+        if (via === "mail") {
+            window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Pharmalyx demo request · " + d.company)}&body=${encodeURIComponent(lines)}`;
+        } else {
+            window.open(waLink(lines), "_blank", "noopener");
+        }
+        out.textContent = "Thanks! Your message is ready to send. Just tap send in " + (via === "mail" ? "your email app." : "WhatsApp.");
+        out.classList.add("show");
+    });
+})();
+</script>
+</body>
+</html>
